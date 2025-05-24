@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRCompress- Kompresi File dengan Cepat dan Efisien</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Floating Flowers & Emojis -->
+    <span class="floating-flower f1">🌸</span>
+    <span class="floating-flower f2">✨</span>
+    <span class="floating-flower f3">🌼</span>
+    <span class="floating-flower f4">💖</span>
+    <span class="floating-flower f5">🌷</span>
+    <span class="floating-emoji e1">✨</span>
+    <span class="floating-emoji e2">☁️</span>
+    <span class="floating-emoji e3">🦄</span>
+    <span class="floating-emoji e4">💾</span>
+    <span class="floating-emoji e5">📦</span>
+    <!-- Floating Leaves & Sparkles -->
+    <span class="floating-leaf l1">🍃</span>
+    <span class="floating-leaf l2">🌱</span>
+    <span class="floating-leaf l3">🍀</span>
+    <span class="floating-leaf l4">🌿</span>
+    <span class="floating-leaf l5">🍃</span>
+    <span class="floating-sparkle s1">✨</span>
+    <span class="floating-sparkle s2">✨</span>
+    <span class="floating-sparkle s3">✨</span>
+    <span class="floating-sparkle s4">✨</span>
+    <span class="floating-sparkle s5">✨</span>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="logo">
+            <img src="{{ url_for('static', filename='NR.png') }}" alt="DataKompresi Logo">
+            <h1>NRCompress</h1>
+        </div>
+            <h1 style="
+                color: #234c2e;
+                font-family: 'Pacifico', 'Quicksand', cursive;
+                font-size: 2.7rem;
+                font-weight: 800;
+                letter-spacing: 2.5px;
+                margin-bottom: 1.1rem;
+                background: none;
+                -webkit-background-clip: initial;
+                -webkit-text-fill-color: initial;">
+                Kompresi File dengan Cepat dan Efisien
+            </h1>
+            <p>Kompresi file Anda dengan berbagai algoritma canggih untuk hasil optimal</p>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <h2 style="
+                background: linear-gradient(90deg, #2d6a4f, #b7efc5, #388e3c);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+                font-family: 'Pacifico', 'Quicksand', cursive;
+                font-size: 2.2rem;
+                font-weight: 800;
+                letter-spacing: 2px;">
+                Kompresi File Anda
+            </h2>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="upload-area" id="dropZone">
+                    <input type="file" id="fileInput" accept=".txt,.docx,.pdf,.jpg,.jpeg,.png,.webp,.zip" hidden>
+                    <div class="upload-content">
+                        <img src="{{ url_for('static', filename='upload-icon.png') }}" alt="Upload">
+                        <p>Drag & Drop file di sini atau</p>
+                        <button type="button" class="btn-upload">Pilih File</button>
+                        <p class="file-types">Format yang didukung: TXT, DOCX, PDF, JPG/JPEG, PNG, WEBP, ZIP</p>
+                    </div>
+                </div>
+                
+                <div class="algorithm-select" id="algorithmSelectWrapper">
+                    <label for="algorithm">Pilih Kompresi:</label>
+                    <select id="algorithm" name="algorithm">
+                        <option value="huffman">Huffman Coding (Teks)</option>
+                        <option value="rle">Run-Length Encoding (Teks)</option>
+                        <option value="lzw">LZW Compression (Teks)</option>
+                        <option value="jpeg">JPEG (Gambar)</option>
+                        <option value="webp">WebP (Gambar)</option>
+                        <option value="png">PNG (Gambar)</option>
+                        <option value="pdf">PDF Compress</option>
+                        <option value="docx">DOCX Compress</option>
+                        <option value="zip">ZIP Compress</option>
+                    </select>
+                </div>
+                <div class="quality-select" id="qualitySelectWrapper" style="display:none; margin-bottom:1.2rem;">
+                    <label for="quality">Kualitas Gambar:</label>
+                    <select id="quality" name="quality">
+                        <option value="90">90 (Tinggi)</option>
+                        <option value="70" selected>70 (Standar)</option>
+                        <option value="50">50 (Kecil)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-compress">Kompresi File</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results" style="display: none;">
+        <div class="container">
+            <h2>Hasil Kompresi</h2>
+            <div class="results-content">
+                <div class="result-item glass-card">
+                    <span class="pop-emoji">🎈</span>
+                    <h3>Ukuran Sebelum</h3>
+                    <p id="originalSize">0 KB</p>
+                </div>
+                <div class="result-item glass-card">
+                    <span class="pop-emoji">✨</span>
+                    <h3>Ukuran Sesudah</h3>
+                    <p id="compressedSize">0 KB</p>
+                </div>
+                <div class="result-item glass-card">
+                    <span class="pop-emoji">🥳</span>
+                    <h3>Rasio Kompresi</h3>
+                    <p id="compressionRatio">0%</p>
+                </div>
+            </div>
+            <button id="downloadBtn" class="btn-download">Download Hasil</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section" style="color: #fff;">
+                    <h3 style="color: #fff;">NRCompress</h3>
+                    <p style="color: #fff;">Solusi kompresi file yang cepat dan efisien untuk kebutuhan Anda.</p>
+                </div>
+                <div class="footer-section" style="color: #fff;">
+                    <h3 style="color: #fff;">Kontak</h3>
+                    <p style="color: #fff;">Email: NRCompress@gmail.com</p>
+                    <p style="color: #fff;">Phone: +62 812 3908 668</p>
+                </div>
+            </div>
+            <div class="footer-bottom" style="color: #fff;">
+                <p style="color: #fff;">&copy; 2025 NRCompress. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
